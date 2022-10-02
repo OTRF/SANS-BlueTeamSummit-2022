@@ -21,12 +21,14 @@
 ### Recommended Reading
 - [Cloud Breach: Compromising AWS IAM Credentials](https://rhinosecuritylabs.com/aws/aws-iam-credentials-get-compromised/)
 - [IAM Bad: Privilege Escalation using Misconfigured Policies in AWS IAM (Webinar)](https://kloudle.com/academy/iam-bad-privilege-escalation-using-misconfigured-policies-in-aws-iam-webinar)
+- [Getting shell and data access in AWS by chaining vulnerabilities](https://blog.appsecco.com/getting-shell-and-data-access-in-aws-by-chaining-vulnerabilities-7630fa57c7ed)
 - [AWS IAM Exploitation Techniques](https://infosecwriteups.com/aws-iam-exploitation-techniques-565830bf704b)
 - [AWS privilege escalation: exploring odd features of the Trust Policy](https://medium.com/inside-the-tech-by-softserve/aws-privilege-escalation-exploring-odd-features-of-the-trust-policy-7a970a32861)
 - [How to use trust policies with IAM roles](https://aws.amazon.com/blogs/security/how-to-use-trust-policies-with-iam-roles/)
 - [Auditing IAM PassRole: A Problematic Privilege Escalation Permission](https://ermetic.com/blog/aws/auditing-passrole-a-problematic-privilege-escalation-permission/)
 - [Privilege Escalation in AWS with PassRole Attacks](https://www.praetorian.com/blog/privilege-escalation-in-aws-with-passrole-attacks/)
 - [Chaining MFA-Enabled IAM Users with IAM Roles for Potential Privilege Escalation in AWS](https://www.praetorian.com/blog/stsgetsessiontoken-role-chaining-in-aws/)
+- [The Anatomy of an IAM Cyber Attack on AWS](https://orca.security/resource/research-pod/anatomy-identity-and-access-management-cyber-attack-aws/)
 - [AWS IAM Tips](https://gist.github.com/sybeck2k/0680b344e360cb9d11fad1ce51d1525c)
 
 ## Video Presentations
