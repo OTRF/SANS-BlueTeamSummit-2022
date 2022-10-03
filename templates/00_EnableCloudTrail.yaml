@@ -1,0 +1,139 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: 'This template creates CloudTrail trail with management and Data events, also S3 bucket to publish the logs to it.'
+
+Metadata:
+  'AWS::CloudFormation::Interface':
+    ParameterGroups:
+      - Label:
+          default: Trail Configuration
+        Parameters:
+          - EnableLogFileValidation
+          - IncludeGlobalEvents
+          - MultiRegion
+    ParameterLabels:
+      EnableLogFileValidation:
+        default: Enable log file validation
+      IncludeGlobalEvents:
+        default: Include global service events
+      MultiRegion:
+        default: Is this a multi-region trail
+
+Parameters:
+  S3StackName:
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: SecurityDataSetsStack
+  EnableLogFileValidation:
+    Type: String
+    Default: true
+    Description: Indicates whether CloudTrail validates the integrity of log files.
+    AllowedValues:
+      - true
+      - false
+  IncludeGlobalEvents:
+    Type: String
+    Default: false
+    Description: >-
+      Indicates whether the trail is publishing events from global services,
+      such as IAM, to the log files.
+    AllowedValues:
+      - true
+      - false
+  MultiRegion:
+    Type: String
+    Default: false
+    Description: >-
+      Indicates whether the CloudTrail trail is created in the region in which
+      you create the stack (false) or in all regions (true).
+    AllowedValues:
+      - true
+      - false
+
+Conditions:
+  IsMultiRegion: !Equals 
+    - !Ref MultiRegion
+    - true
+
+Resources:
+  TrailforDataSets:
+    Type: 'AWS::S3::Bucket'
+    Properties: 
+          BucketEncryption:
+            ServerSideEncryptionConfiguration:
+              - ServerSideEncryptionByDefault:
+                  SSEAlgorithm: AES256
+
+  S3BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      Bucket: !Ref TrailforDataSets
+      PolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Sid: AWSCloudTrailBucketPermissionsCheck
+            Effect: Allow
+            Principal:
+              Service:
+                - cloudtrail.amazonaws.com
+            Action: 's3:GetBucketAcl'
+            Resource:
+              'Fn::GetAtt':
+                - TrailforDataSets
+                - Arn
+          - Sid: ' AWSConfigBucketDelivery'
+            Effect: Allow
+            Principal:
+              Service:
+                - cloudtrail.amazonaws.com
+            Action: 's3:PutObject'
+            Resource: 
+              Fn::Join:
+                - ""
+                -
+                  - Fn::GetAtt:
+                      - "TrailforDataSets"
+                      - "Arn"
+                  - "/AWSLogs/*"
+            Condition:
+              StringEquals:
+                's3:x-amz-acl': bucket-owner-full-control
+
+  cloudTrail:
+    DependsOn:
+      - S3BucketPolicy
+    Type: 'AWS::CloudTrail::Trail'
+    Properties:
+      TrailName: SecurityDataSets_S3DataEvents
+      IsLogging: true
+      EnableLogFileValidation: !Ref EnableLogFileValidation
+      IncludeGlobalServiceEvents: !If 
+        - IsMultiRegion
+        - true
+        - !Ref IncludeGlobalEvents
+      IsMultiRegionTrail: !Ref MultiRegion
+      EventSelectors:
+        - IncludeManagementEvents: true
+          ReadWriteType: All
+        - DataResources:
+            - Type: 'AWS::S3::Object'
+              Values: 
+                - "arn:aws:s3:::"
+            - Type: "AWS::Lambda::Function"
+              Values:
+                - "arn:aws:lambda"
+            - Type: "AWS::DynamoDB::Table"
+              Values:
+                - "arn:aws:dynamodb"
+          ReadWriteType: All
+      S3BucketName: !Ref TrailforDataSets
+  
+
+
+Outputs:
+  BucketName:
+    Value: !Ref TrailforDataSets
+    Description: Name of the S3 bucket that holds audit logs (Cloudtrail).
+    Export:
+      Name: !Sub '${AWS::StackName}'

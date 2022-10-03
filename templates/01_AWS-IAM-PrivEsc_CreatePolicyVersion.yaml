@@ -1,0 +1,88 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "Privilege escalation path for user with iam:CreatePolicyVersion permission"
+
+Parameters:
+  TagsKeyParam:
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: AWSIAMSimuland
+  TagsValueParam:
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: iamPrivEsc-CreateNewPolicyVersion
+  RoleNameParam:
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: iamPrivEsc-CreatePolicyVersion-Role
+  ManagedPolicyNameParam:
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: iamPrivEsc-CreatePolicyVersion
+
+Resources:
+  iamUser:
+      Type: AWS::IAM::User
+      Properties:
+        ManagedPolicyArns: 
+            - !Ref iamPolicy
+        Tags:
+        - Key: 
+            Ref: TagsKeyParam
+          Value:
+            Ref: TagsValueParam
+  iamAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName:
+        !Ref iamUser
+  iamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+                - iam.amazonaws.com
+          Action:
+            - sts:AssumeRole
+      RoleName:
+            Ref: RoleNameParam
+      ManagedPolicyArns: 
+        - !Ref iamPolicy
+      Tags:
+        - Key: 
+            Ref: TagsKeyParam
+          Value:
+            Ref: TagsValueParam
+  iamPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName:
+        Ref: ManagedPolicyNameParam
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: "iam:CreatePolicyVersion"
+          Resource: "*"
+
+Outputs:
+  AWSIAMUser:
+    Value: 
+      !Ref iamUser
+  AccessKeyID:
+    Value: 
+      !Ref iamAccessKey
+  SecretAccessKey:
+    Value: 
+      !GetAtt iamAccessKey.SecretAccessKey
