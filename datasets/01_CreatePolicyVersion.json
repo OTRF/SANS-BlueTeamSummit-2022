@@ -1,0 +1,174 @@
+{
+    "Events": [
+        {
+            "EventId": "2a57b45a-0d6b-42e4-9de5-922e111a83c0",
+            "EventName": "CreateAccessKey",
+            "ReadOnly": "false",
+            "AccessKeyId": "ASIAIYEJHIYWJRWKRJVQ",
+            "EventTime": "2022-10-04T04:58:36+00:00",
+            "EventSource": "iam.amazonaws.com",
+            "Username": "temp-cfn-deploy",
+            "Resources": [
+                {
+                    "ResourceType": "AWS::IAM::AccessKey",
+                    "ResourceName": "AKIASXWWDVU32J5T3XP5"
+                },
+                {
+                    "ResourceType": "AWS::IAM::User",
+                    "ResourceName": "PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3"
+                }
+            ],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDASXWWDVU37HNYMTOFE\",\"arn\":\"arn:aws:iam::000000000000:user/temp-cfn-deploy\",\"accountId\":\"000000000000\",\"accessKeyId\":\"ASIAIYEJHIYWJRWKRJVQ\",\"userName\":\"temp-cfn-deploy\",\"sessionContext\":{\"sessionIssuer\":{},\"webIdFederationData\":{},\"attributes\":{\"creationDate\":\"2022-10-04T04:57:32Z\",\"mfaAuthenticated\":\"false\"}},\"invokedBy\":\"cloudformation.amazonaws.com\"},\"eventTime\":\"2022-10-04T04:58:36Z\",\"eventSource\":\"iam.amazonaws.com\",\"eventName\":\"CreateAccessKey\",\"awsRegion\":\"us-east-1\",\"sourceIPAddress\":\"cloudformation.amazonaws.com\",\"userAgent\":\"cloudformation.amazonaws.com\",\"requestParameters\":{\"userName\":\"PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3\"},\"responseElements\":{\"accessKey\":{\"userName\":\"PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3\",\"accessKeyId\":\"AKIASXWWDVU32J5T3XP5\",\"status\":\"Active\",\"createDate\":\"Oct 4, 2022 4:58:36 AM\"}},\"requestID\":\"75d9f2d7-9733-4b18-a857-cda7a0b08bf8\",\"eventID\":\"2a57b45a-0d6b-42e4-9de5-922e111a83c0\",\"readOnly\":false,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"000000000000\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "b301afa9-09b5-4955-9f0e-b7652fb35c48",
+            "EventName": "AttachUserPolicy",
+            "ReadOnly": "false",
+            "AccessKeyId": "ASIAIYEJHIYWJRWKRJVQ",
+            "EventTime": "2022-10-04T04:58:34+00:00",
+            "EventSource": "iam.amazonaws.com",
+            "Username": "temp-cfn-deploy",
+            "Resources": [
+                {
+                    "ResourceType": "AWS::IAM::User",
+                    "ResourceName": "PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3"
+                },
+                {
+                    "ResourceType": "AWS::IAM::Policy",
+                    "ResourceName": "arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion"
+                }
+            ],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDASXWWDVU37HNYMTOFE\",\"arn\":\"arn:aws:iam::000000000000:user/temp-cfn-deploy\",\"accountId\":\"000000000000\",\"accessKeyId\":\"ASIAIYEJHIYWJRWKRJVQ\",\"userName\":\"temp-cfn-deploy\",\"sessionContext\":{\"sessionIssuer\":{},\"webIdFederationData\":{},\"attributes\":{\"creationDate\":\"2022-10-04T04:57:32Z\",\"mfaAuthenticated\":\"false\"}},\"invokedBy\":\"cloudformation.amazonaws.com\"},\"eventTime\":\"2022-10-04T04:58:34Z\",\"eventSource\":\"iam.amazonaws.com\",\"eventName\":\"AttachUserPolicy\",\"awsRegion\":\"us-east-1\",\"sourceIPAddress\":\"cloudformation.amazonaws.com\",\"userAgent\":\"cloudformation.amazonaws.com\",\"requestParameters\":{\"userName\":\"PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3\",\"policyArn\":\"arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion\"},\"responseElements\":null,\"requestID\":\"ece64278-8f04-422f-a0f1-ddd75f6046dc\",\"eventID\":\"b301afa9-09b5-4955-9f0e-b7652fb35c48\",\"readOnly\":false,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"000000000000\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "99b8df29-5df1-480c-b8a9-26e22d75d4dd",
+            "EventName": "AttachRolePolicy",
+            "ReadOnly": "false",
+            "AccessKeyId": "ASIAIYEJHIYWJRWKRJVQ",
+            "EventTime": "2022-10-04T04:57:59+00:00",
+            "EventSource": "iam.amazonaws.com",
+            "Username": "temp-cfn-deploy",
+            "Resources": [
+                {
+                    "ResourceType": "AWS::IAM::Policy",
+                    "ResourceName": "arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion"
+                },
+                {
+                    "ResourceType": "AWS::IAM::Role",
+                    "ResourceName": "iamPrivEsc-CreatePolicyVersion-Role"
+                }
+            ],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDASXWWDVU37HNYMTOFE\",\"arn\":\"arn:aws:iam::000000000000:user/temp-cfn-deploy\",\"accountId\":\"000000000000\",\"accessKeyId\":\"ASIAIYEJHIYWJRWKRJVQ\",\"userName\":\"temp-cfn-deploy\",\"sessionContext\":{\"sessionIssuer\":{},\"webIdFederationData\":{},\"attributes\":{\"creationDate\":\"2022-10-04T04:57:32Z\",\"mfaAuthenticated\":\"false\"}},\"invokedBy\":\"cloudformation.amazonaws.com\"},\"eventTime\":\"2022-10-04T04:57:59Z\",\"eventSource\":\"iam.amazonaws.com\",\"eventName\":\"AttachRolePolicy\",\"awsRegion\":\"us-east-1\",\"sourceIPAddress\":\"cloudformation.amazonaws.com\",\"userAgent\":\"cloudformation.amazonaws.com\",\"requestParameters\":{\"roleName\":\"iamPrivEsc-CreatePolicyVersion-Role\",\"policyArn\":\"arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion\"},\"responseElements\":null,\"requestID\":\"836282d9-6885-4bd4-a339-c15894825219\",\"eventID\":\"99b8df29-5df1-480c-b8a9-26e22d75d4dd\",\"readOnly\":false,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"000000000000\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "33edbc77-8c60-4ba8-98d9-afdcdc83cbe5",
+            "EventName": "GetRole",
+            "ReadOnly": "true",
+            "AccessKeyId": "ASIAIYEJHIYWJRWKRJVQ",
+            "EventTime": "2022-10-04T04:57:58+00:00",
+            "EventSource": "iam.amazonaws.com",
+            "Username": "temp-cfn-deploy",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDASXWWDVU37HNYMTOFE\",\"arn\":\"arn:aws:iam::000000000000:user/temp-cfn-deploy\",\"accountId\":\"000000000000\",\"accessKeyId\":\"ASIAIYEJHIYWJRWKRJVQ\",\"userName\":\"temp-cfn-deploy\",\"sessionContext\":{\"sessionIssuer\":{},\"webIdFederationData\":{},\"attributes\":{\"creationDate\":\"2022-10-04T04:57:32Z\",\"mfaAuthenticated\":\"false\"}},\"invokedBy\":\"cloudformation.amazonaws.com\"},\"eventTime\":\"2022-10-04T04:57:58Z\",\"eventSource\":\"iam.amazonaws.com\",\"eventName\":\"GetRole\",\"awsRegion\":\"us-east-1\",\"sourceIPAddress\":\"cloudformation.amazonaws.com\",\"userAgent\":\"cloudformation.amazonaws.com\",\"errorCode\":\"NoSuchEntityException\",\"errorMessage\":\"The role with name iamPrivEsc-CreatePolicyVersion-Role cannot be found.\",\"requestParameters\":{\"roleName\":\"iamPrivEsc-CreatePolicyVersion-Role\"},\"responseElements\":null,\"requestID\":\"bb134e93-78b5-4b8b-b07a-7506a576794b\",\"eventID\":\"33edbc77-8c60-4ba8-98d9-afdcdc83cbe5\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"000000000000\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "ed3330a3-42c8-4c17-8735-c3609e432a51",
+            "EventName": "CreateUser",
+            "ReadOnly": "false",
+            "AccessKeyId": "ASIAIYEJHIYWJRWKRJVQ",
+            "EventTime": "2022-10-04T04:57:58+00:00",
+            "EventSource": "iam.amazonaws.com",
+            "Username": "temp-cfn-deploy",
+            "Resources": [
+                {
+                    "ResourceType": "AWS::IAM::User",
+                    "ResourceName": "PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3"
+                },
+                {
+                    "ResourceType": "AWS::IAM::User",
+                    "ResourceName": "arn:aws:iam::000000000000:user/PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3"
+                },
+                {
+                    "ResourceType": "AWS::IAM::User",
+                    "ResourceName": "AIDASXWWDVU36B4T5GFRN"
+                }
+            ],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDASXWWDVU37HNYMTOFE\",\"arn\":\"arn:aws:iam::000000000000:user/temp-cfn-deploy\",\"accountId\":\"000000000000\",\"accessKeyId\":\"ASIAIYEJHIYWJRWKRJVQ\",\"userName\":\"temp-cfn-deploy\",\"sessionContext\":{\"sessionIssuer\":{},\"webIdFederationData\":{},\"attributes\":{\"creationDate\":\"2022-10-04T04:57:32Z\",\"mfaAuthenticated\":\"false\"}},\"invokedBy\":\"cloudformation.amazonaws.com\"},\"eventTime\":\"2022-10-04T04:57:58Z\",\"eventSource\":\"iam.amazonaws.com\",\"eventName\":\"CreateUser\",\"awsRegion\":\"us-east-1\",\"sourceIPAddress\":\"cloudformation.amazonaws.com\",\"userAgent\":\"cloudformation.amazonaws.com\",\"requestParameters\":{\"path\":\"/\",\"userName\":\"PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3\",\"tags\":[{\"key\":\"AWSIAMSimuland\",\"value\":\"iamPrivEsc-CreateNewPolicyVersion\"}]},\"responseElements\":{\"user\":{\"path\":\"/\",\"userName\":\"PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3\",\"userId\":\"AIDASXWWDVU36B4T5GFRN\",\"arn\":\"arn:aws:iam::000000000000:user/PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3\",\"createDate\":\"Oct 4, 2022 4:57:58 AM\",\"tags\":[{\"key\":\"AWSIAMSimuland\",\"value\":\"iamPrivEsc-CreateNewPolicyVersion\"}]}},\"requestID\":\"909e74e4-667c-40d6-8554-0230ae7adac0\",\"eventID\":\"ed3330a3-42c8-4c17-8735-c3609e432a51\",\"readOnly\":false,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"000000000000\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "fc87600b-c62b-476d-9dac-283bebd8dbeb",
+            "EventName": "CreateRole",
+            "ReadOnly": "false",
+            "AccessKeyId": "ASIAIYEJHIYWJRWKRJVQ",
+            "EventTime": "2022-10-04T04:57:58+00:00",
+            "EventSource": "iam.amazonaws.com",
+            "Username": "temp-cfn-deploy",
+            "Resources": [
+                {
+                    "ResourceType": "AWS::IAM::Role",
+                    "ResourceName": "arn:aws:iam::000000000000:role/iamPrivEsc-CreatePolicyVersion-Role"
+                },
+                {
+                    "ResourceType": "AWS::IAM::Role",
+                    "ResourceName": "AROASXWWDVU37CWWJCCQM"
+                },
+                {
+                    "ResourceType": "AWS::IAM::Role",
+                    "ResourceName": "iamPrivEsc-CreatePolicyVersion-Role"
+                }
+            ],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDASXWWDVU37HNYMTOFE\",\"arn\":\"arn:aws:iam::000000000000:user/temp-cfn-deploy\",\"accountId\":\"000000000000\",\"accessKeyId\":\"ASIAIYEJHIYWJRWKRJVQ\",\"userName\":\"temp-cfn-deploy\",\"sessionContext\":{\"sessionIssuer\":{},\"webIdFederationData\":{},\"attributes\":{\"creationDate\":\"2022-10-04T04:57:32Z\",\"mfaAuthenticated\":\"false\"}},\"invokedBy\":\"cloudformation.amazonaws.com\"},\"eventTime\":\"2022-10-04T04:57:58Z\",\"eventSource\":\"iam.amazonaws.com\",\"eventName\":\"CreateRole\",\"awsRegion\":\"us-east-1\",\"sourceIPAddress\":\"cloudformation.amazonaws.com\",\"userAgent\":\"cloudformation.amazonaws.com\",\"requestParameters\":{\"path\":\"/\",\"roleName\":\"iamPrivEsc-CreatePolicyVersion-Role\",\"assumeRolePolicyDocument\":\"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Action\\\":[\\\"sts:AssumeRole\\\"],\\\"Effect\\\":\\\"Allow\\\",\\\"Principal\\\":{\\\"Service\\\":[\\\"iam.amazonaws.com\\\"]}}]}\",\"description\":\"\",\"tags\":[{\"key\":\"AWSIAMSimuland\",\"value\":\"iamPrivEsc-CreateNewPolicyVersion\"}]},\"responseElements\":{\"role\":{\"path\":\"/\",\"roleName\":\"iamPrivEsc-CreatePolicyVersion-Role\",\"roleId\":\"AROASXWWDVU37CWWJCCQM\",\"arn\":\"arn:aws:iam::000000000000:role/iamPrivEsc-CreatePolicyVersion-Role\",\"createDate\":\"Oct 4, 2022 4:57:58 AM\",\"assumeRolePolicyDocument\":\"%7B%22Version%22%3A%222012-10-17%22%2C%22Statement%22%3A%5B%7B%22Action%22%3A%5B%22sts%3AAssumeRole%22%5D%2C%22Effect%22%3A%22Allow%22%2C%22Principal%22%3A%7B%22Service%22%3A%5B%22iam.amazonaws.com%22%5D%7D%7D%5D%7D\",\"tags\":[{\"key\":\"AWSIAMSimuland\",\"value\":\"iamPrivEsc-CreateNewPolicyVersion\"}]}},\"requestID\":\"99e04f40-91e9-4e8f-86ac-417024a7c1ec\",\"eventID\":\"fc87600b-c62b-476d-9dac-283bebd8dbeb\",\"readOnly\":false,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"000000000000\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "4be26ce1-424f-47ac-9973-a374abd61e72",
+            "EventName": "GetPolicy",
+            "ReadOnly": "true",
+            "AccessKeyId": "ASIAIYEJHIYWJRWKRJVQ",
+            "EventTime": "2022-10-04T04:57:37+00:00",
+            "EventSource": "iam.amazonaws.com",
+            "Username": "temp-cfn-deploy",
+            "Resources": [],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDASXWWDVU37HNYMTOFE\",\"arn\":\"arn:aws:iam::000000000000:user/temp-cfn-deploy\",\"accountId\":\"000000000000\",\"accessKeyId\":\"ASIAIYEJHIYWJRWKRJVQ\",\"userName\":\"temp-cfn-deploy\",\"sessionContext\":{\"sessionIssuer\":{},\"webIdFederationData\":{},\"attributes\":{\"creationDate\":\"2022-10-04T04:57:32Z\",\"mfaAuthenticated\":\"false\"}},\"invokedBy\":\"cloudformation.amazonaws.com\"},\"eventTime\":\"2022-10-04T04:57:37Z\",\"eventSource\":\"iam.amazonaws.com\",\"eventName\":\"GetPolicy\",\"awsRegion\":\"us-east-1\",\"sourceIPAddress\":\"cloudformation.amazonaws.com\",\"userAgent\":\"cloudformation.amazonaws.com\",\"errorCode\":\"NoSuchEntityException\",\"errorMessage\":\"Policy arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion was not found.\",\"requestParameters\":{\"policyArn\":\"arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion\"},\"responseElements\":null,\"requestID\":\"f8f79212-b980-4c4a-9729-0affb12a8e89\",\"eventID\":\"4be26ce1-424f-47ac-9973-a374abd61e72\",\"readOnly\":true,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"000000000000\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "eb06a6c0-9175-46c7-b362-6a64fc567694",
+            "EventName": "CreatePolicy",
+            "ReadOnly": "false",
+            "AccessKeyId": "ASIAIYEJHIYWJRWKRJVQ",
+            "EventTime": "2022-10-04T04:57:37+00:00",
+            "EventSource": "iam.amazonaws.com",
+            "Username": "temp-cfn-deploy",
+            "Resources": [
+                {
+                    "ResourceType": "AWS::IAM::Policy",
+                    "ResourceName": "iamPrivEsc-CreatePolicyVersion"
+                },
+                {
+                    "ResourceType": "AWS::IAM::Policy",
+                    "ResourceName": "arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion"
+                },
+                {
+                    "ResourceType": "AWS::IAM::Policy",
+                    "ResourceName": "ANPASXWWDVU3ZP3AF53Z4"
+                }
+            ],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDASXWWDVU37HNYMTOFE\",\"arn\":\"arn:aws:iam::000000000000:user/temp-cfn-deploy\",\"accountId\":\"000000000000\",\"accessKeyId\":\"ASIAIYEJHIYWJRWKRJVQ\",\"userName\":\"temp-cfn-deploy\",\"sessionContext\":{\"sessionIssuer\":{},\"webIdFederationData\":{},\"attributes\":{\"creationDate\":\"2022-10-04T04:57:32Z\",\"mfaAuthenticated\":\"false\"}},\"invokedBy\":\"cloudformation.amazonaws.com\"},\"eventTime\":\"2022-10-04T04:57:37Z\",\"eventSource\":\"iam.amazonaws.com\",\"eventName\":\"CreatePolicy\",\"awsRegion\":\"us-east-1\",\"sourceIPAddress\":\"cloudformation.amazonaws.com\",\"userAgent\":\"cloudformation.amazonaws.com\",\"requestParameters\":{\"policyName\":\"iamPrivEsc-CreatePolicyVersion\",\"path\":\"/\",\"policyDocument\":\"{\\\"Version\\\":\\\"2012-10-17\\\",\\\"Statement\\\":[{\\\"Action\\\":\\\"iam:CreatePolicyVersion\\\",\\\"Resource\\\":\\\"*\\\",\\\"Effect\\\":\\\"Allow\\\"}]}\"},\"responseElements\":{\"policy\":{\"policyName\":\"iamPrivEsc-CreatePolicyVersion\",\"policyId\":\"ANPASXWWDVU3ZP3AF53Z4\",\"arn\":\"arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion\",\"path\":\"/\",\"defaultVersionId\":\"v1\",\"attachmentCount\":0,\"permissionsBoundaryUsageCount\":0,\"isAttachable\":true,\"createDate\":\"Oct 4, 2022 4:57:37 AM\",\"updateDate\":\"Oct 4, 2022 4:57:37 AM\"}},\"requestID\":\"c5d5a202-8277-48d1-a3a9-44c03d43b1e8\",\"eventID\":\"eb06a6c0-9175-46c7-b362-6a64fc567694\",\"readOnly\":false,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"000000000000\",\"eventCategory\":\"Management\"}"
+        },
+        {
+            "EventId": "84019265-35db-40cf-bde4-90f71999780c",
+            "EventName": "CreatePolicyVersion",
+            "ReadOnly": "false",
+            "AccessKeyId": "AKIASXWWDVU32J5T3XP5",
+            "EventTime": "2022-10-04T05:06:52+00:00",
+            "EventSource": "iam.amazonaws.com",
+            "Username": "PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3",
+            "Resources": [
+                {
+                    "ResourceType": "AWS::IAM::Policy",
+                    "ResourceName": "arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion"
+                }
+            ],
+            "CloudTrailEvent": "{\"eventVersion\":\"1.08\",\"userIdentity\":{\"type\":\"IAMUser\",\"principalId\":\"AIDASXWWDVU36B4T5GFRN\",\"arn\":\"arn:aws:iam::000000000000:user/PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3\",\"accountId\":\"000000000000\",\"accessKeyId\":\"AKIASXWWDVU32J5T3XP5\",\"userName\":\"PrivEscviaCreatePolicyVersion-iamUser-1UVNFMWK6F8G3\"},\"eventTime\":\"2022-10-04T05:06:52Z\",\"eventSource\":\"iam.amazonaws.com\",\"eventName\":\"CreatePolicyVersion\",\"awsRegion\":\"us-east-1\",\"sourceIPAddress\":\"20.228.72.98\",\"userAgent\":\"aws-cli/2.7.35 Python/3.9.11 Linux/5.4.0-1077-azure exe/x86_64.ubuntu.18 prompt/off command/iam.create-policy-version\",\"requestParameters\":{\"policyArn\":\"arn:aws:iam::000000000000:policy/iamPrivEsc-CreatePolicyVersion\",\"policyDocument\":\"{\\n   \\\"Version\\\": \\\"2012-10-17\\\",\\n   \\\"Statement\\\": [\\n       {\\n           \\\"Sid\\\": \\\"AllowEverything\\\",\\n           \\\"Effect\\\": \\\"Allow\\\",\\n           \\\"Action\\\": \\\"*\\\",\\n           \\\"Resource\\\": \\\"*\\\"\\n       }\\n    ]\\n }\",\"setAsDefault\":true},\"responseElements\":{\"policyVersion\":{\"versionId\":\"v2\",\"isDefaultVersion\":true,\"createDate\":\"Oct 4, 2022 5:06:52 AM\"}},\"requestID\":\"87a678ff-e068-472b-8300-0b2b09ab441e\",\"eventID\":\"84019265-35db-40cf-bde4-90f71999780c\",\"readOnly\":false,\"eventType\":\"AwsApiCall\",\"managementEvent\":true,\"recipientAccountId\":\"000000000000\",\"eventCategory\":\"Management\",\"tlsDetails\":{\"tlsVersion\":\"TLSv1.2\",\"cipherSuite\":\"ECDHE-RSA-AES128-GCM-SHA256\",\"clientProvidedHostHeader\":\"iam.amazonaws.com\"}}"
+        }
+    ]
+}
