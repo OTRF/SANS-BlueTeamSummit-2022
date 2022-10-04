@@ -1,0 +1,143 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "An End to end attack scenario from Initial access to Persistence"
+
+Parameters:
+  TagsKeyParam:
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: AWSIAMSimuland
+  TagsValueParam:
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: iamPrivEsc-EndtoEndScenario
+  KeyPairName:
+    Type: String
+    Description: The name of an existing Amazon EC2 key pair in this region to use to SSH into the Amazon EC2 instances.
+    Default: aws-ubuntu-sshkey
+  InstanceType:
+    Description: EC2 instance type
+    Type: String
+    Default: t2.nano
+    AllowedValues: [t2.nano, t2.micro,t3.nano, t3.micro]
+    ConstraintDescription: must be a valid EC2 instance type.
+  RoleNameParam:
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: iamPrivEsc-EndtoEndRole
+  ManagedPolicyNameParam:
+    Type: String
+    MinLength: 1
+    MaxLength: 255
+    AllowedPattern: '^[a-zA-Z][-a-zA-Z0-9]*$'
+    Default: iamPrivEsc-EndtoEndPolicy
+  AmiID:
+    Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+    Description: "The ID of the AMI."
+    Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+    
+Resources:  
+  iamUser:
+      Type: AWS::IAM::User
+      Properties:
+        ManagedPolicyArns: 
+            - !Ref iamPolicy
+        Tags:
+        - Key: 
+            Ref: TagsKeyParam
+          Value:
+            Ref: TagsValueParam
+  iamAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName:
+        !Ref iamUser
+  iamRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal:
+            Service:
+                - ec2.amazonaws.com
+          Action:
+            - sts:AssumeRole
+      RoleName:
+            Ref: RoleNameParam
+      ManagedPolicyArns: 
+        - !Ref iamPolicy
+      Tags:
+        - Key: 
+            Ref: TagsKeyParam
+          Value:
+            Ref: TagsValueParam
+  iamPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName:
+        Ref: ManagedPolicyNameParam
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action: ["iam:UpdateAssumeRolePolicy",
+        "sts:AssumeRole"
+        ]
+          Resource: "*"
+  S3Bucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      AccessControl: PublicRead
+  BucketPolicy:
+    Type: 'AWS::S3::BucketPolicy'
+    Properties:
+      PolicyDocument:
+        Id: MyPolicy
+        Version: 2012-10-17
+        Statement:
+          - Sid: PublicReadForGetBucketObjects
+            Effect: Allow
+            Principal: '*'
+            Action: 's3:GetObject'
+            Resource: !Join 
+              - ''
+              - - 'arn:aws:s3:::'
+                - !Ref S3Bucket
+                - /*
+      Bucket: !Ref S3Bucket
+  Ec2Instance: 
+      Type: AWS::EC2::Instance
+      Properties: 
+        ImageId: !Ref AmiID
+        InstanceType: !Ref InstanceType
+        KeyName: !Ref KeyPairName
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt 
+      - S3Bucket
+      - WebsiteURL
+    Description: URL for bucket hosted on S3
+  S3BucketSecureURL:
+    Value: !Join 
+      - ''
+      - - 'https://'
+        - !GetAtt 
+          - S3Bucket
+          - DomainName
+    Description: Name of S3 bucket
+  AWSIAMUser:
+    Value: 
+      !Ref iamUser
+  AccessKeyID:
+    Value: 
+      !Ref iamAccessKey
+  SecretAccessKey:
+    Value: 
+      !GetAtt iamAccessKey.SecretAccessKey
